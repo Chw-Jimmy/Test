@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>SSM_Spring_mvc</display-name>
+
+
+	<servlet>
+		<servlet-name>spingmvc</servlet-name>
+
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+		<!-- 读取springMVC 配置文件 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:springMVC.xml</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>spingmvc</servlet-name>
+		<!-- 拦截规则 -->
+		<!-- 1、*.hml *.action *.do 以拓展名方式进行拦截，不拦截静态资源，如： .jpg .png .css等.什么情况下都可以使用 
+			2、/ 不拦截jsp 拦截静态资源 restful 风格 静态资源放行 
+			3、/* 全部拦截，包括jsp和所有的静态资源 不推荐使用 -->
+		<url-pattern>*.do</url-pattern>
+
+	</servlet-mapping>
+
+
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
